@@ -8,7 +8,7 @@ const News = () => {
   const fetchAllNews = async () => {
     const { data } = await axios.get(Allnews());
 
-    setAllnews(data.articles);
+    setAllnews(data.data);
   };
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const News = () => {
                 <strong>{stringdot(news.title.toUpperCase(), 100)}</strong>
               </h2>
               <img
-                src={news.urlToImage}
+                src="news.jpg"
                 alt="Error"
                 className="w-60 h-40 m-2 content-center"
               />
@@ -40,7 +40,7 @@ const News = () => {
                 {stringdot(news.description, 165)}
               </a>
               <p className="text-sm align-bottom mt-2 font-semibold">
-                {news?.publishedAt}
+                {news?.published_at}
               </p>
             </div>
           </div>

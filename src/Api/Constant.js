@@ -4,8 +4,8 @@ export const CoinList = (currency) =>
   `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`;
 
 //b2797ff764f84d479c904d0aad5008d4
-export const Allnews = (topic = "Cryptocurrency") =>
-  `https://newsapi.org/v2/everything?q=${topic}&from=2022-06-28&sortBy=popularity&apiKey=b2797ff764f84d479c904d0aad5008d4`;
+export const Allnews =()=>
+  `http://api.mediastack.com/v1/news?access_key=60b260b866e714f6b4b12fa4a98077e3&&categories=technology&languages=en&keywords=crypto&sort=published_desc& offset=0&limit=40`;
 
 export const cryptoName = (id) =>
   `https://api.coingecko.com/api/v3/coins/${id}`;
