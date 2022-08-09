@@ -1,14 +1,33 @@
 import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
-import { Allnews } from "../Api/Constant";
+
 
 const News = () => {
   const [allnews, setAllnews] = useState([]);
-  const fetchAllNews = async () => {
-    const { data } = await axios.get(Allnews());
 
-    setAllnews(data.data);
+  const axios = require("axios");
+
+  const options = {
+    method: 'GET',
+    url: 'https://newscatcher.p.rapidapi.com/v1/search',
+    params: {q: 'cryptocurrency', lang: 'en', sort_by: 'relevancy', page: '1', media: 'True'},
+    headers: {
+      'X-RapidAPI-Key': 'f02642ed80msha1a4f07abb323c8p185e22jsnaae5b5c6c581',
+      'X-RapidAPI-Host': 'newscatcher.p.rapidapi.com'
+    }
+  };
+  
+ 
+  const fetchAllNews = async () => {
+   
+  await axios.request(options).then(function (response) {
+    setAllnews(response.data.articles);
+   
+  }).catch(function (error) {
+    console.error(error);
+  });
+  
   };
 
   useEffect(() => {
@@ -32,15 +51,15 @@ const News = () => {
                 <strong>{stringdot(news.title.toUpperCase(), 100)}</strong>
               </h2>
               <img
-                src="news.jpg"
+                src={news.media}
                 alt="Error"
                 className="w-60 h-40 m-2 content-center"
               />
-              <a className="font-normal" href={news.url}>
-                {stringdot(news.description, 165)}
+              <a className="font-normal" href={news.link}>
+                {stringdot(news.summary, 165)}
               </a>
               <p className="text-sm align-bottom mt-2 font-semibold">
-                {news?.published_at}
+                {news?.published_date}
               </p>
             </div>
           </div>
