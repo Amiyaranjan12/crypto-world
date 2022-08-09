@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 
 const News = () => {
   const [allnews, setAllnews] = useState([]);
+  const API_KEY=process.env.REACT_APP_NEWS_KEY;
+
 
   const axios = require("axios");
 
@@ -18,7 +20,7 @@ const News = () => {
       media: "True",
     },
     headers: {
-      "X-RapidAPI-Key": "f02642ed80msha1a4f07abb323c8p185e22jsnaae5b5c6c581",
+      "X-RapidAPI-Key": API_KEY,
       "X-RapidAPI-Host": "newscatcher.p.rapidapi.com",
     },
   };
