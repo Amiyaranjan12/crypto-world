@@ -2,32 +2,36 @@ import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
 
-
 const News = () => {
   const [allnews, setAllnews] = useState([]);
 
   const axios = require("axios");
 
   const options = {
-    method: 'GET',
-    url: 'https://newscatcher.p.rapidapi.com/v1/search',
-    params: {q: 'cryptocurrency', lang: 'en', sort_by: 'relevancy', page: '1', media: 'True'},
+    method: "GET",
+    url: "https://newscatcher.p.rapidapi.com/v1/search",
+    params: {
+      q: "cryptocurrency",
+      lang: "en",
+      sort_by: "relevancy",
+      page: "1",
+      media: "True",
+    },
     headers: {
-      'X-RapidAPI-Key': 'f02642ed80msha1a4f07abb323c8p185e22jsnaae5b5c6c581',
-      'X-RapidAPI-Host': 'newscatcher.p.rapidapi.com'
-    }
+      "X-RapidAPI-Key": "f02642ed80msha1a4f07abb323c8p185e22jsnaae5b5c6c581",
+      "X-RapidAPI-Host": "newscatcher.p.rapidapi.com",
+    },
   };
-  
- 
+
   const fetchAllNews = async () => {
-   
-  await axios.request(options).then(function (response) {
-    setAllnews(response.data.articles);
-   
-  }).catch(function (error) {
-    console.error(error);
-  });
-  
+    await axios
+      .request(options)
+      .then(function (response) {
+        setAllnews(response.data.articles);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
   };
 
   useEffect(() => {
